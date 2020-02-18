@@ -1,0 +1,9 @@
+<div class='new-subscription-container'>
+  <p>Do you know someone who needs to experience God’s love and care?<br>God wants to do this through you!</p>
+  <p>Send me steps of faith to take with my friend.</p>
+
+  <%= form_tag step_set_subscriptions_path do |f| %>
+    <%= text_field_tag :phone_number, '', required: true, placeholder: 'Mobile Phone' %>
+    <%= submit_tag 'send me steps' %>
+  <% end %>
+</div>
