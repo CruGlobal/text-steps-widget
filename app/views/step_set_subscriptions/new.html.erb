@@ -1,9 +1,12 @@
 <div class='new-subscription-container'>
-  <p>Do you know someone who needs to experience God’s love and care?<br>God wants to do this through you!</p>
-  <p>Send me steps of faith to take with my friend.</p>
+  <div class='calling-message'>
+    <h2>God wants to use you to reach people in need</h2>
+    <p>Let us help you take steps of faith with our new <%= image_tag 'text-steps-logo.png', width: '165px' %></p>
+  </div>
 
-  <%= form_tag step_set_subscriptions_path do |f| %>
-    <%= text_field_tag :phone_number, '', required: true, placeholder: 'Mobile Phone' %>
-    <%= submit_tag 'send me steps' %>
+  <%= form_tag step_set_subscriptions_path, class: 'form' do |f| %>
+    <%= text_field_tag :phone_number, '', required: true, placeholder: '📞Mobile Phone' %>
+    <%= submit_tag 'remind me' %>
+    <p>We don’t like spam and we promise not to share your phone number</p>
   <% end %>
 </div>

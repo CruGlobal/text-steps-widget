@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
@@ -9,36 +13,79 @@ body {
 }
 
 .new-subscription-container {
-  display: inline-block;
+  display: grid;
   height: 100%;
   width: 100%;
-  background: linear-gradient(0, rgb(35, 39, 42) 0%, rgb(57, 63, 67) 100%);
+  background: #383f43;
   color: white;
-  text-align: center;
   padding: 33px 0;
+
+  grid-template-columns: 1fr 350px 55px 350px 1fr;
 }
 
-p {
+.calling-message {
+  grid-column-start: 2;
+  grid-column-end: 3;
+
   font-family: Source Sans Pro;
   font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 32px;
+
+  h2 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  p {
+    font-size: 21px;
+    line-height: 32px;
+  }
+
+  img {
+    position: relative;
+    top: 31px;
+    margin-top: -38px;
+    left: -12px;
+  }
+}
+
+.form {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  text-align: center;
+
+  display: grid;
+  grid-template-columns: 220px 120px;
+  grid-template-rows: 40px auto;
+  padding-top: 40px;
+
+  p {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    height: 21px;
+    left: 583px;
+    top: 416px;
+
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 28px;
+  }
 }
 
 input {
   font-size: 16px;
   line-height: 34px;
-  margin: 4px;
+  border: none;
+}
+
+input[type="text"] {
+  padding: 1px 12px;
 }
 
 input[type="submit"] {
-  width: 240px;
-  height: 40px;
   cursor: pointer;
-  display: inline-block;
-  border: none;
-  text-decoration: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 
@@ -46,17 +93,10 @@ input[type="submit"] {
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 
   font-family: Source Sans Pro;
-  font-style: normal;
   font-weight: bold;
-  font-size: 16px;
   color: #383f43;
   padding: 4px;
 
   letter-spacing: 1px;
   text-transform: uppercase;
-}
-
-input[type="text"] {
-  width: 230px;
-  padding: 1px 5px;
 }
