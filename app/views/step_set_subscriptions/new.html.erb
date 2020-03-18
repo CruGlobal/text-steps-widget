@@ -1,19 +1,22 @@
-<div class='step-container'>
   <div class='step'>
     <%= image_tag 'small-logo.png', width: '67px' %>
-    <h2>a faith step to take:</h2>
-    <h1>Encourage your friend by asking if you can pray for them.</h1>
+    <div class='text'>
+      <h2>a faith step to take:</h2>
+      <h1>Encourage your friend by asking if you can pray for them.</h1>
+    </div>
   </div>
-</div>
 <div class='new-subscription-container'>
   <div class='calling-message'>
     <h2>God wants to use you to reach people in need</h2>
     <p>Let us help you take steps of faith with our new <%= image_tag 'text-steps-logo.png', width: '165px' %></p>
   </div>
 
-  <%= form_tag step_set_subscriptions_path, class: 'form' do |f| %>
-    <%= text_field_tag :phone_number, '', required: true, placeholder: '📞Mobile Phone' %>
-    <%= submit_tag 'remind me' %>
+  <%= form_tag step_set_subscriptions_path, class: 'form' do %>
+    <div class='form-row'>
+      <%= label_tag :phone_number, 'Mobile Phone', class: 'hidden' %>
+      <%= text_field_tag :phone_number, '', required: true, placeholder: '📞Mobile Phone' %>
+      <%= submit_tag 'remind me' %>
+    </div>
     <p>We don’t like spam and we promise not to share your phone number</p>
   <% end %>
 </div>

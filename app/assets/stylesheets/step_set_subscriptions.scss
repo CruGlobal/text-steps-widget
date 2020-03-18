@@ -1,3 +1,29 @@
+$breakpoints: (
+  'small':  450px,
+  'medium': 992px,
+  'large':  1200px
+) !default;
+
+/// Mixin to manage responsive breakpoints
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+ 
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
 $base-yellow: #ffcf07;
 $base-gray: #383f43;
 
@@ -14,21 +40,20 @@ body {
   margin: 0;
   height: 100%;
   font-family: Source Sans Pro;
-}
-
-.step-container {
-  background: $base-yellow;
+  background: $base-gray;
 }
 
 .step {
-  width: 755px;
+  background: $base-yellow;
+
+  max-width: 755px;
   margin: 0 auto;
   color: $base-gray;
-  padding: 56px 0;
+  padding: 42px 28px;
+  min-height: 166px;
 
   display: grid;
   grid-template-columns: 57px auto;
-  grid-template-rows: 32px auto;
 
   $tri-edge: 23px;
   &:after {
@@ -42,13 +67,11 @@ body {
   }
 
   img {
-    grid-row: 1 / 3;
-    margin: 19px 0 -16px -15px;
+    margin: 3px 0 -16px -15px;
   }
 
   h2,
   h1 {
-    grid-column: 2 / 3;
     margin: 0;
   }
 
@@ -62,35 +85,41 @@ body {
 
   h1 {
     font-weight: 300;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 32px;
+
+    @include respond-to('small') {
+      font-size: 25px;
+    }
   }
 }
 
 .new-subscription-container {
   display: grid;
-  height: 100%;
-  width: 100%;
+  // height: 350px;
   background: $base-gray;
   color: white;
-  padding: 33px 0;
+  padding: 33px 30px;
 
-  grid-template-columns: 1fr 350px 55px 350px 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(315px, 355px));
+  grid-column-gap: 55px;
+  grid-row-gap: 40px;
+  justify-content: center;
 }
 
 .calling-message {
-  grid-column-start: 2;
-  grid-column-end: 3;
-
   font-style: normal;
 
   h2 {
     font-size: 32px;
+    font-weight: 600;
     line-height: 36px;
+    margin-top: 0;
   }
 
   p {
     font-size: 21px;
+    font-weight: 300;
     line-height: 32px;
   }
 
@@ -103,18 +132,8 @@ body {
 }
 
 .form {
-  grid-column-start: 4;
-  grid-column-end: 5;
-  text-align: center;
-
-  display: grid;
-  grid-template-columns: 220px 120px;
-  grid-template-rows: 40px auto;
-  padding-top: 40px;
-
   p {
-    grid-column-start: 1;
-    grid-column-end: 3;
+    text-align: center;
 
     height: 21px;
     left: 583px;
@@ -126,6 +145,11 @@ body {
     font-size: 10px;
     line-height: 28px;
   }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 120px;
 }
 
 input {
@@ -153,4 +177,13 @@ input[type="submit"] {
 
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.success-message {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.hidden {
+  display: none;
 }
