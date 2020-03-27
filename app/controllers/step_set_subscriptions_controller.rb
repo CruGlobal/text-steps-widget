@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 class StepSetSubscriptionsController < ApplicationController
   TWILIO_FROM_NUMBER = Rails.application.credentials.twilio[:from_number]
+  STEP_DESCRIPTION = "Encourage your friend by asking if you can pray for them."
 
   def new
+    @step_description = STEP_DESCRIPTION
   end
 
   def create
@@ -19,6 +23,6 @@ class StepSetSubscriptionsController < ApplicationController
     client = Twilio::REST::Client.new(Rails.application.credentials.twilio[:account_sid],
       Rails.application.credentials.twilio[:auth_token])
     flow = client.studio.v1.flows(Rails.application.credentials.twilio[:flow_id])
-    flow.executions.create(from: TWILIO_FROM_NUMBER, to: params[:phone_number])
+    flow.executions.create(from: TWILIO_FROM_NUMBER, to: params[:phone_number], parameters: { step: STEP_DESCRIPTION }.to_json)
   end
 end
