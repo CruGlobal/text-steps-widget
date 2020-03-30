@@ -15,6 +15,7 @@
   </div>
 
   <%= form_tag step_set_subscriptions_path, class: 'form' do %>
+    <%= hidden_field_tag :step_id, params[:step_id] %>
     <div class='form-row'>
       <%= label_tag :phone_number, 'Mobile Phone', class: 'hidden' %>
       <%= text_field_tag :phone_number, '', required: true, placeholder: '📞Mobile Phone' %>
