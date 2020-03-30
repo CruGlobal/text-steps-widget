@@ -5,7 +5,7 @@ class StepSetSubscriptionsController < ApplicationController
   STEP_DESCRIPTION = "Encourage your friend by asking if you can pray for them."
 
   def new
-    @step_description = STEP_DESCRIPTION
+    @step_description = step_description
   end
 
   def create
@@ -23,6 +23,12 @@ class StepSetSubscriptionsController < ApplicationController
     client = Twilio::REST::Client.new(Rails.application.credentials.twilio[:account_sid],
       Rails.application.credentials.twilio[:auth_token])
     flow = client.studio.v1.flows(Rails.application.credentials.twilio[:flow_id])
-    flow.executions.create(from: TWILIO_FROM_NUMBER, to: params[:phone_number], parameters: { step: STEP_DESCRIPTION }.to_json)
+    flow.executions.create(from: TWILIO_FROM_NUMBER, to: params[:phone_number], parameters: { step: step_description }.to_json)
+  end
+
+  def step_description
+    step = Step.find_by(id: params[:step_id]) if params[:step_id]
+    return step.body if step
+    STEP_DESCRIPTION
   end
 end
