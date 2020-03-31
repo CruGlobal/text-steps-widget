@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_194851) do
+ActiveRecord::Schema.define(version: 2020_02_17_203957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "step_set_subscriptions", force: :cascade do |t|
+    t.string "execution_sid", null: false
+    t.string "status", default: "pending", null: false
+    t.bigint "step_set_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["step_set_id"], name: "index_step_set_subscriptions_on_step_set_id"
+  end
 
   create_table "step_sets", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
