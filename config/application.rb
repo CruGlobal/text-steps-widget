@@ -2,14 +2,29 @@
 
 require_relative 'boot'
 
-require 'rails/all'
+# require 'rails/all'
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_view/railtie'
+require 'sprockets/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require_relative '../lib/log/logger'
 module StepInvitationPlatform
   class Application < Rails::Application
+    unless ENV['HEROKU']
+      # Enable ougai
+      if Rails.env.development? || Rails.const_defined?('Console')
+        config.logger = Log::Logger.new(STDOUT)
+      elsif !Rails.env.test? # use default logger in test env
+        config.logger = Log::Logger.new(Rails.root.join('log', 'datadog.log'))
+      end
+      config.log_formatter = ::Logger::Formatter.new
+    end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 

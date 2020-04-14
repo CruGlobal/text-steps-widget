@@ -21,6 +21,8 @@ gem "turbolinks", "~> 5"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
+gem "amazing_print"
+gem "ougai", '~> 1.7'
 gem "twilio-ruby"
 
 group :development, :test do
