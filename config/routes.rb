@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :step_set_subscriptions, only: %i[new create show]
 
   post '/step_set_subscriptions/update', to: 'step_set_subscriptions#update'
+
+  get  'monitors/lb'
+  get  'monitors/commit'
 end
