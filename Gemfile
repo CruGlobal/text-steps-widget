@@ -23,6 +23,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "amazing_print"
 gem "ougai", '~> 1.7'
+gem "rollbar"
 gem "twilio-ruby"
 
 group :development, :test do
