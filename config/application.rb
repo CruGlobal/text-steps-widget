@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -17,7 +19,9 @@ module StepInvitationPlatform
     # the framework and any gems in your application.
 
     config.action_dispatch.default_headers = {
-      "X-Frame-Options" => "ALLOWALL"
+      'X-Frame-Options' => 'ALLOWALL'
     }
+
+    config.assets.initialize_on_precompile = false
   end
 end
