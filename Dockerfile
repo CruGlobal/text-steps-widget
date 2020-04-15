@@ -2,6 +2,7 @@ FROM 056154071827.dkr.ecr.us-east-1.amazonaws.com/base-image-ruby-version-arg:2.
 MAINTAINER cru.org <wmd@cru.org>
 
 ARG DD_API_KEY
+RUN echo $DD_API_KEY
 RUN DD_INSTALL_ONLY=true DD_API_KEY=$DD_API_KEY bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/datadog-agent/master/cmd/agent/install_script.sh)"
 
 # Config for logging to datadog
