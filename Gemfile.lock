@@ -67,6 +67,8 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    ddtrace (0.34.2)
+      msgpack
     diff-lcs (1.3)
     erubi (1.9.0)
     faraday (1.0.0)
@@ -237,6 +239,7 @@ DEPENDENCIES
   amazing_print
   awesome_print
   bootsnap (>= 1.4.2)
+  ddtrace (~> 0.34)
   listen (>= 3.0.5, < 3.2)
   ougai (~> 1.7)
   pg

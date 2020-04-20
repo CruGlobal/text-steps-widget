@@ -25,6 +25,7 @@ gem "amazing_print"
 gem "ougai", "~> 1.7"
 gem "rollbar"
 gem "twilio-ruby"
+gem "ddtrace", "~> 0.34"
 
 group :development, :test do
   gem "awesome_print", require: false
