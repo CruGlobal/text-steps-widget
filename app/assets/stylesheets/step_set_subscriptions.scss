@@ -1,8 +1,8 @@
 $breakpoints: (
-  'xsmall': 375px,
-  'small':  450px,
-  'medium': 992px,
-  'large':  1200px
+  "xsmall": 375px,
+  "small": 450px,
+  "medium": 992px,
+  "large": 1200px,
 ) !default;
 
 /// Mixin to manage responsive breakpoints
@@ -17,7 +17,7 @@ $breakpoints: (
       @content;
     }
   }
- 
+
   // If the key doesn't exist in the map
   @else {
     @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
@@ -57,7 +57,11 @@ body {
   grid-template-columns: 57px minmax(1px, 710px);
   justify-content: center;
 
-  @include respond-to('xsmall') {
+  @include respond-to("xsmall") {
+    padding: ($side-padding * 1.25) $side-padding;
+  }
+
+  @include respond-to("small") {
     padding: ($side-padding * 1.5) $side-padding;
   }
 
@@ -83,7 +87,7 @@ body {
     font-size: 20px;
     line-height: 32px;
 
-    @include respond-to('small') {
+    @include respond-to("small") {
       font-size: 25px;
     }
   }
@@ -106,7 +110,7 @@ $tri-edge: 20px;
 
 .new-subscription-container {
   display: grid;
-  min-height: 280px;
+  min-height: 260px;
 
   background: $base-gray;
   color: white;
@@ -114,11 +118,11 @@ $tri-edge: 20px;
 
   grid-template-columns: repeat(auto-fit, minmax(260px, 355px));
   grid-column-gap: 55px;
-  grid-row-gap: 40px;
+  grid-row-gap: $side-padding;
   justify-content: center;
   align-items: center;
-  
-  @include respond-to('xsmall') {
+
+  @include respond-to("xsmall") {
     padding: 40px $side-padding 10px;
   }
 }
@@ -127,22 +131,26 @@ $tri-edge: 20px;
   font-style: normal;
 
   h2 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 600;
     line-height: 1.125em;
     margin-top: 0;
     margin-bottom: 10px;
-    
-    @include respond-to('xsmall') {
+
+    @include respond-to("xsmall") {
       font-size: 32px;
     }
   }
 
   p {
-    font-size: 21px;
+    font-size: 18px;
     font-weight: 300;
     line-height: 32px;
     margin: 0;
+
+    @include respond-to("xsmall") {
+      font-size: 21px;
+    }
   }
 
   img {
@@ -177,8 +185,8 @@ input {
   font-size: 14px;
   line-height: 34px;
   border: none;
-  
-  @include respond-to('xsmall') {
+
+  @include respond-to("xsmall") {
     font-size: 16px;
   }
 }
