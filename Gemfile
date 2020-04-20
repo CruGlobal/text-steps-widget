@@ -26,10 +26,10 @@ gem "ougai", "~> 1.7"
 gem "rollbar"
 gem "twilio-ruby"
 gem "ddtrace", "~> 0.34"
+gem "pry-byebug"
 
 group :development, :test do
   gem "awesome_print", require: false
-  gem "pry-byebug"
   gem "rspec-rails", "~> 4.0.0.beta"
   gem "standard"
 end

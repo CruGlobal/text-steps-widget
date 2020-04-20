@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class StepSetSubscriptionsController < ApplicationController
-  TWILIO_FROM_NUMBER = Rails.application.credentials.twilio[:from_number]
+  TWILIO_FROM_NUMBER = ENV["TWILIO_FROM_NUMBER"] || Rails.application.credentials.twilio[:from_number]
+  TWILIO_FLOW_ID = ENV["TWILIO_FLOW_ID"] || Rails.application.credentials.twilio[:flow_id]
+  TWILIO_ACCOUNT_SID = ENV["TWILIO_ACCOUNT_SID"] || Rails.application.credentials.twilio[:account_sid]
+  TWILIO_AUTH_TOKEN = ENV["TWILIO_AUTH_TOKEN"] || Rails.application.credentials.twilio[:auth_token]
+
   STEP_DESCRIPTION = "Encourage your friend by asking if you can pray for them."
 
   skip_before_action :verify_authenticity_token, only: [:update]
@@ -29,15 +33,14 @@ class StepSetSubscriptionsController < ApplicationController
   private
 
   def create_twilio_session
-    flow = client.studio.v1.flows(Rails.application.credentials.twilio[:flow_id])
+    flow = client.studio.v1.flows(TWILIO_FLOW_ID)
     flow.executions.create(from: TWILIO_FROM_NUMBER,
                            to: params[:phone_number],
                            parameters: {step: step_description}.to_json)
   end
 
   def client
-    Twilio::REST::Client.new(Rails.application.credentials.twilio[:account_sid],
-      Rails.application.credentials.twilio[:auth_token])
+    Twilio::REST::Client.new(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
   end
 
   def step
