@@ -21,9 +21,8 @@ ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.1
 
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle config set path 'vendor'
-# RUN bundle config set without 'development test'
-RUN bundle install --jobs 20 --retry 5
+RUN bundle config set without 'development test'
+RUN bundle install --jobs 20 --retry 5 --deployment
 RUN bundle binstubs bundler --force
 RUN bundle binstub puma rake rails
 
