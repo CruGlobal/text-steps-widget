@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>StepInvitationPlatform</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet">
-  </head>
+<head>
+  <title>StepInvitationPlatform</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width">
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet">
+  <% if Rails.env.staging? %>
+  <script src="//assets.adobedtm.com/launch-EN5d806cd3bf634b52a8ee5387e783444d-development.min.js" async></script>
+  <% end %>
+</head>
+
+<body>
+  <%= yield %>
+</body>
+
 </html>
