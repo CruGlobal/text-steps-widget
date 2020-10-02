@@ -16,8 +16,8 @@ COPY docker/datadog-agent /etc/datadog-agent
 COPY docker/supervisord-datadog.conf /etc/supervisor/conf.d/supervisord-datadog.conf
 COPY docker/docker-entrypoint.sh /
 
-RUN apt-get install -y -q libjemalloc1=3.6.0-9.1
-ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.1
+# https://www.speedshop.co/2017/12/04/malloc-doubles-ruby-memory.html - limit malloc arenas
+ENV MALLOC_ARENA_MAX=4
 
 COPY Gemfile Gemfile.lock ./
 
