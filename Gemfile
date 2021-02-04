@@ -27,6 +27,8 @@ gem "pry-byebug"
 
 group :development, :test do
   gem "awesome_print", require: false
+  gem "brakeman"
+  gem "bundler-audit"
   gem "rspec-rails", "~> 4.0.0.beta"
   gem "standard"
 end
