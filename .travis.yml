@@ -1,0 +1,24 @@
+language: ruby
+cache:
+  bundler: true
+  directories:
+    - node_modules
+  yarn: true
+services:
+  - redis-server
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+      - postgresql-10
+      - postgresql-client-10
+before_install:
+  - yarn --ignore-engines
+before_script:
+  - bundle exec rails db:setup RAILS_ENV=test
+script:
+  - bundle exec rails test
+  - bundle exec standardrb
+  - bundle exec bundle audit check --update --ignore CVE-2015-9284
+  - bundle exec brakeman --ensure-latest -A -q --no-pager
+  - yarn audit
