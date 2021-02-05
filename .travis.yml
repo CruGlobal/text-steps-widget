@@ -19,6 +19,6 @@ before_script:
 script:
   - bundle exec rails test
   - bundle exec standardrb
-  - bundle exec bundle audit check --update --ignore CVE-2015-9284
+  - bundle exec bundle audit check --update
   - bundle exec brakeman --ensure-latest -A -q --no-pager
   - yarn audit
