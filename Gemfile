@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.1"
+ruby "2.7.2"
 
 gem "rails", "~> 6.0.2", ">= 6.0.2.1"
 gem "pg"
@@ -27,6 +27,8 @@ gem "pry-byebug"
 
 group :development, :test do
   gem "awesome_print", require: false
+  gem "brakeman"
+  gem "bundler-audit"
   gem "rspec-rails", "~> 4.0.0.beta"
   gem "standard"
 end
