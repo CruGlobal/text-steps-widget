@@ -87,9 +87,9 @@ GEM
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jwt (2.2.1)
-    listen (3.0.8)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
+    listen (3.5.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.9.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -119,7 +119,7 @@ GEM
     pry-byebug (3.8.0)
       byebug (~> 11.0)
       pry (~> 0.10)
-    puma (4.3.6)
+    puma (5.2.2)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -203,10 +203,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    semantic_range (3.0.0)
     spring (2.1.0)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -229,15 +227,16 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.7.0)
-    web-console (4.0.1)
+    web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (4.2.2)
-      activesupport (>= 4.2)
+    webpacker (5.2.1)
+      activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
-      railties (>= 4.2)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -249,26 +248,25 @@ PLATFORMS
 DEPENDENCIES
   amazing_print
   awesome_print
-  bootsnap (>= 1.4.2)
+  bootsnap (>= 1.4.4)
   brakeman
   bundler-audit
   ddtrace (~> 0.34)
-  listen (>= 3.0.5, < 3.2)
+  listen (~> 3.3)
   ougai (~> 1.7)
   pg
   pry-byebug
-  puma (~> 4.1)
+  puma (~> 5.0)
   rails (~> 6.1.0)
   rollbar
   rspec-rails (~> 4.0.0.beta)
   sass-rails (>= 6)
   spring
-  spring-watcher-listen (~> 2.0.0)
   standard
   turbolinks (~> 5)
   twilio-ruby
-  web-console (>= 3.3.0)
-  webpacker (~> 4.0)
+  web-console (>= 4.1.0)
+  webpacker (~> 5.0)
 
 RUBY VERSION
    ruby 3.0.1p64
