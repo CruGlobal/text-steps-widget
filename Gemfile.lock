@@ -120,7 +120,7 @@ GEM
     pry-byebug (3.8.0)
       byebug (~> 11.0)
       pry (~> 0.10)
-    puma (5.2.2)
+    puma (5.3.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -257,7 +257,7 @@ DEPENDENCIES
   ougai (~> 1.7)
   pg
   pry-byebug
-  puma (~> 5.0)
+  puma (~> 5.3)
   rails (~> 6.1.0)
   rollbar
   rspec-rails (~> 4.0.0.beta)
