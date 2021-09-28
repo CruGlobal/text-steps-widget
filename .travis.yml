@@ -13,6 +13,7 @@ addons:
       - postgresql-10
       - postgresql-client-10
 before_install:
+  - gem install bundler -v 2.2.28
   - yarn --ignore-engines
 before_script:
   - bundle exec rails db:setup RAILS_ENV=test
