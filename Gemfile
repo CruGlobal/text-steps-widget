@@ -5,7 +5,7 @@ ruby "3.0.2"
 
 gem "rails", "~> 6.1.0"
 gem "pg"
-gem "puma", "~> 5.5"
+gem "puma", "~> 5.6"
 gem "sass-rails", ">= 6"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem "webpacker", "~> 5.0"
