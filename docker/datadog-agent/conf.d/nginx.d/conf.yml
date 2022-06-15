@@ -9,13 +9,13 @@ logs:
     #   tags: (optional) add tags to each logs collected
 
   - type: file
-    service: missionhub-api
+    service: text-steps-widget
     path: /var/log/nginx/access.log
     source: nginx
     sourcecategory: nginx_access
 
   - type: file
-    service: missionhub-api
+    service: text-steps-widget
     path: /var/log/error*.log
     source: nginx
     sourcecategory: nginx_error
@@ -23,4 +23,3 @@ logs:
 init_config:
 instances:
   - nginx_status_url: http://localhost:81/nginx_status/
-
