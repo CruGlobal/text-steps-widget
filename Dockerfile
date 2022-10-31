@@ -23,8 +23,7 @@ RUN apk --no-cache add libc6-compat git postgresql-libs tzdata nodejs yarn
 COPY Gemfile Gemfile.lock ./
 
 # Install bundler version which created the lock file and configure it
-RUN gem install bundler -v $(awk '/^BUNDLED WITH/ { getline; print $1; exit }' Gemfile.lock) \
-    && bundle config --global without development:test
+RUN gem install bundler -v $(awk '/^BUNDLED WITH/ { getline; print $1; exit }' Gemfile.lock)
 
 # Install build-dependencies, then install gems, subsequently removing build-dependencies
 RUN apk --no-cache add --virtual build-deps build-base postgresql-dev \
