@@ -5,4 +5,5 @@ vendor/cache
 vendor/ruby
 tmp
 log/*
+node_modules
 Dockerfile
