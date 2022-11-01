@@ -9,10 +9,6 @@ RUN addgroup -g 1000 webapp \
     && mkdir -p /home/webapp/app
 WORKDIR /home/webapp/app
 
-# Environment required to build the application
-ARG RAILS_ENV=production
-ARG SECRET_KEY_BASE=abc123
-
 # Upgrade alpine packages (useful for security fixes)
 RUN apk upgrade --no-cache
 
@@ -33,9 +29,17 @@ RUN apk --no-cache add --virtual build-deps build-base postgresql-dev \
 # Copy the application
 COPY . .
 
+# Environment required to build the application
+ARG RAILS_ENV=production
+ARG SECRET_KEY_BASE=abc123
+
 # Compile assets
 RUN RAILS_ENV=production bundle exec rake assets:clobber assets:precompile \
     && chown -R webapp:webapp /home/webapp/
+
+# Define volumes used by ECS to share public html and extra nginx config with nginx container
+VOLUME /home/webapp/app/public
+VOLUME /home/webapp/app/nginx-conf
 
 # Run container process as non-root user
 USER webapp
