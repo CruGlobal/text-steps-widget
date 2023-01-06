@@ -22,7 +22,8 @@ gem "amazing_print"
 gem "ougai", "~> 1.7"
 gem "rollbar"
 gem "twilio-ruby"
-gem "ddtrace", "~> 0.34"
+gem "ddtrace", "~> 1.5"
+gem "dogstatsd-ruby", "~> 5.3"
 gem "pry-byebug"
 
 group :development, :test do
